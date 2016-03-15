@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "/WEB-INF/classes/struts-2.0.dtd">
+<struts>
+    <!--
+    <package name="default" namespace="/pro" extends="struts-default">
+        <action name="Login" class="com.struts.action.LoginAction">
+            <result name="error">/pages/error.jsp</result>
+            <result name="success">/pages/success.jsp</result>
+        </action>
+    </package>
+    -->
+    <!-- 指定Struts2处于开发阶段，可以进行调试 -->
+    <constant name="struts.devMode" value="true" />
+    
+    <package name="test" extends="struts-default" namespace="/views">
+		<action name="test" method="test" class="com.myself.action.test.TestAction">
+		</action>    	
+    </package>
+    
+    <!-- Struts2的Action都必须配置在package里 -->
+    <package name="p2" extends="struts-default" namespace="/views">
+    	<action name="add" method="abc" class="com.haiersoft.ch01.framework.AddAction">
+    		<result name="cal">/views/add_result.jsp</result>
+    	</action>
+    </package>
+    
+    <package name="counter" extends="struts-default" namespace="/views">
+		<action name="counter1" class="com.haiersoft.ch03.CounterAction">
+			<result name="success">/add.jsp</result>
+		</action>    	
+    </package>
+    
+    <!-- 用户注册 -->
+    <package name="reg" extends="struts-default">
+    	<action name="reg" class="com.haiersoft.ch03.RegAction">
+    		<result name="success">/views/regsuccess.jsp</result>
+    		<!-- Struts2框架定义结果类型，当FieldErrors中有错误信息时，流程转到input-->
+    		<result name="input">/views/reg.jsp</result>
+    	</action>
+    </package>
+</struts>

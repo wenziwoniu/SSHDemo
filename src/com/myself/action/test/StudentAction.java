@@ -31,5 +31,9 @@ public class StudentAction extends BaseStruts2Action {
 		getRequest().setAttribute("query", student);
 		return "success";
 	}
+	
+	public String saveStudent() {
+		return "success";
+	}
 
 }

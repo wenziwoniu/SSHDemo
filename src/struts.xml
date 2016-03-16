@@ -22,6 +22,10 @@
     <package name="student" extends="struts-default" namespace="/student">
 		<action name="redirect" method="redirect" class="com.myself.action.test.StudentAction">
 			<result name="success">/views/dwz/table.jsp</result>
+		</action>  
+		
+		<action name="saveStudent" method="saveStudent" class="com.myself.action.test.StudentAction">
+			<result name="success">/views/commons/ajaxDone.jsp</result>
 		</action>    	
     </package>
     

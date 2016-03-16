@@ -13,7 +13,7 @@
 <body>
 	
 	<div class="pageContent">
-		<form id="peopleAdd" method="post" action="/JavaPractice/people/savePeople.do" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+		<form method="post" action="/SSHDemo/student/saveStudent.action" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
 			<div class="pageFormContent" layoutH="50">
 				<p>
 					<label>姓名：</label>
@@ -32,7 +32,7 @@
 					<li>
 						<div class="buttonActive">
 							<div class="buttonContent">
-								<button onclick="peopleAdd();">保存</button>
+								<button type="submit">保存</button>
 							</div>
 						</div>
 					</li>

@@ -19,6 +19,12 @@
 		</action>    	
     </package>
     
+    <package name="student" extends="struts-default" namespace="/student">
+		<action name="redirect" method="redirect" class="com.myself.action.test.StudentAction">
+			<result name="success">/views/dwz/table.jsp</result>
+		</action>    	
+    </package>
+    
     <!-- Struts2的Action都必须配置在package里 -->
     <package name="p2" extends="struts-default" namespace="/views">
     	<action name="add" method="abc" class="com.haiersoft.ch01.framework.AddAction">

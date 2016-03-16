@@ -54,7 +54,5 @@
 			</tr>
 		</table>
 	</form>
-	<a onclick="delUser();">删除</a>
-	<a onclick="editUser();">删除</a>
 </body>
 </html>

@@ -75,6 +75,11 @@
 		<!--<property name="mappingLocations" value="classpath*:com/creawor/demo/model/*.hbm.xml"/>-->
 		
 		<!-- packagesToScan可以自动搜索某个package的全部标记@Entity class -->
+		<property name="packagesToScan">
+			<list>
+				<value>com.**.entity</value>
+			</list>
+		</property>
 		<property name="hibernateProperties">
 			<props>
 				<!--常用数据库方言 MySQL5Dialect,SQLServerDialect,OracleDialect,SybaseDialect,DB2Dialect,HSQLDialect -->
@@ -100,6 +105,10 @@
 	</bean>
 	
 	<bean id="studentDao" class="com.myself.dao.StudentDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="classDao" class="com.myself.dao.ClassDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	

@@ -2,8 +2,8 @@
 {
 	"statusCode":"200", 
 	"message":"保存成功", 
-	"navTabId":"table", 
+	"navTabId":"showUsers", 
 	"rel":"",
-	"callbackType":"closeCurrent",
+	"callbackType":"",
 	"forwardUrl":""
 }

@@ -68,6 +68,30 @@ public class StudentDao {
 		pageObject.setList(students);
 		return pageObject;
 	}
+	
+	/**
+	 * 功能：保存学生数据
+	 * 开发：v_wbzwwang 2016年3月21日 下午4:06:23
+	 * @param student
+	 */
+	public void saveStudent(Student student) {
+		Session session = sessionFactory.getCurrentSession();
+		session.save(student);
+	}
+	
+	public Student findStudentById(Long id) {
+		Session session = sessionFactory.getCurrentSession();
+		String sqlString = "SELECT * FROM STUDENT WHERE ID = :id";
+		Query query = session.createSQLQuery(sqlString);
+		query.setParameter("id", id);
+		Object object = query.uniqueResult();
+		Object[] objects = (Object[]) object;
+		Student students = new Student();
+		students.setId(Long.parseLong(objects[0].toString()));
+		students.setStudentName(objects[1].toString());
+		students.setOptlock(Integer.parseInt(objects[2].toString()));
+		return students;
+	}
 
 
 

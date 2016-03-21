@@ -17,7 +17,7 @@
 			<div class="pageFormContent" layoutH="50">
 				<p>
 					<label>姓名：</label>
-					<input type="text" name="peopleName" />
+					<input type="text" name="studentName" value="${student.studentName}" />
 				</p>
 				
 				<p>

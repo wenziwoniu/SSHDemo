@@ -26,7 +26,16 @@
 		
 		<action name="saveStudent" method="saveStudent" class="com.myself.action.test.StudentAction">
 			<result name="success">/views/commons/ajaxDone.jsp</result>
-		</action>    	
+		</action> 
+		
+		<action name="editStudent" method="editStudent" class="com.myself.action.test.StudentAction">
+			<result name="success">/views/dwz/peopleAdd.jsp</result>
+		</action>   
+		
+		<action name="deleteStudent" method="deleteStudent" class="com.myself.action.test.StudentAction">
+			<result name="success">/views/commons/ajaxDone.jsp</result>
+		</action>   
+			
     </package>
     
     <!-- Struts2的Action都必须配置在package里 -->

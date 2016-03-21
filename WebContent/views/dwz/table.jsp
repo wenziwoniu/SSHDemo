@@ -40,11 +40,14 @@
 				<li><a onclick="query()"><span>查询</span></a></li>
 				<li class="line"></li>
 				<li><a href="peopleAdd.jsp" target="dialog" rel="peopleAdd"><span>新增</span></a></li>
+				<li><a href="/SSHDemo/student/editStudent.action?id={id}" target="dialog" rel="peopleAdd"><span>修改</span></a></li>
+				<li><a href="/SSHDemo/student/deleteStudent.action" target="selectedTodo" rel="ids" postType="string" title="确定要删除吗?" class="delete"><span>删除</span></a></li>
 			</ul>
 		</div>
 		<table class="table" width="100%" layoutH="150">
 			<thead>
 				<tr>
+					<th width="30"><input type="checkbox" group="ids" class="checkboxCtrl" /></th>
 					<th width="80">序号</th>
 					<th width="120">名字</th>
 					<th width="120">真实姓名</th>
@@ -54,7 +57,8 @@
 			</thead>
 			<tbody>
 				<c:forEach var="p" items="${pages.list}" varStatus="status">
-					<tr>
+					<tr target="id" rel="${p.id}">
+						<td><input name="ids" type="checkbox" value="${p.id}"/></td>
 						<td>${status.index + 1}</td>
 						<td>a</td>
 						<td>b</td>

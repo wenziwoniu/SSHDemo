@@ -3,6 +3,8 @@ package com.myself.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Id;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -77,6 +79,19 @@ public class StudentDao {
 	public void saveStudent(Student student) {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(student);
+	}
+	
+	public void updateStudent(Student student) {
+		Session session = sessionFactory.getCurrentSession();
+		Student student2 = (Student) session.merge(student);
+	}
+	
+	public void deleteStudent(String id) {
+		Session session = sessionFactory.getCurrentSession();
+		String sqlString = "DELETE FROM STUDENT WHERE ID = :id";
+		Query query = session.createSQLQuery(sqlString);
+		query.setParameter("id", id);
+		query.executeUpdate();
 	}
 	
 	public Student findStudentById(Long id) {

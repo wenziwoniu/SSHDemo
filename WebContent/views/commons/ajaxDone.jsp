@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 {
-	"statusCode":"200", 
-	"message":"保存成功", 
-	"navTabId":"showUsers", 
-	"rel":"",
-	"callbackType":"",
-	"forwardUrl":""
+	"statusCode":"${reponseData.statusCode}", 
+	"message":"${reponseData.message}", 
+	"navTabId":"${reponseData.navTabId}", 
+	"rel":"${reponseData.rel}",
+	"callbackType":"${reponseData.callbackType}",
+	"forwardUrl":"${reponseData.forwardUrl}"
 }

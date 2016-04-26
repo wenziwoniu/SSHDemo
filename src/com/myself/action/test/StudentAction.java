@@ -6,6 +6,7 @@ import com.myself.entity.Classes;
 import com.myself.entity.Student;
 import com.myself.pojo.CommonQuery;
 import com.myself.pojo.PageObject;
+import com.myself.pojo.ResponseData;
 import com.myself.service.StudentService;
 import com.myself.util.StringUtils;
 
@@ -16,6 +17,14 @@ public class StudentAction extends BaseStruts2Action {
 	private StudentService studentService;
 	
 	private Student student;
+	
+	private ResponseData closeDialog = ResponseData.CLOSE_DIALOG;
+	
+	private ResponseData closeNavTab = ResponseData.CLOSE_NAVTAB;
+	
+	private ResponseData noCloseNavTab = ResponseData.NO_CLOSE_NAVTAB;
+	
+	private ResponseData success = ResponseData.SUCCESS;
 	
 	public Student getStudent() {
 		return student;
@@ -51,15 +60,16 @@ public class StudentAction extends BaseStruts2Action {
 	 * @return
 	 */
 	public String saveStudent() {
-		Student student = new Student();
-		String studentName = getRequest().getParameter("studentName");
-		String optlock = getRequest().getParameter("optlock");
-		student.setStudentName(studentName);
-		student.setOptlock(Integer.parseInt(optlock));
+//		Student student = new Student();
+//		String studentName = getRequest().getParameter("studentName");
+//		String optlock = getRequest().getParameter("optlock");
+//		student.setStudentName(studentName);
+//		student.setOptlock(Integer.parseInt(optlock));
 		
 		Classes classes = new Classes();
 		classes.setClassName("cekong");
 		studentService.saveStudent(student, classes);
+		getRequest().setAttribute("reponseData", closeDialog);
 		return "success";
 	}
 	
@@ -70,9 +80,17 @@ public class StudentAction extends BaseStruts2Action {
 		return "success";
 	}
 	
+	public String updateStudent() {
+		studentService.updateStudent(student);
+		closeDialog.setRel("box");
+		getRequest().setAttribute("reponseData", closeDialog);
+		return "success";
+	}
+	
 	public String deleteStudent() {
 		String id = getRequest().getParameter("ids");
-		System.out.println(id);
+		studentService.deleteStudent(id);
+		getRequest().setAttribute("reponseData", success);
 		return "success";
 	}
 

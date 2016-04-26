@@ -40,8 +40,18 @@ public class StudentService {
 	}
 	
 	@Transactional
+	public void updateStudent(Student student) {
+		studentDao.updateStudent(student);
+	}
+	
+	@Transactional
 	public Student findStudentById(Long id) {
 		return studentDao.findStudentById(id);
+	}
+	
+	@Transactional
+	public void deleteStudent(String id) {
+		studentDao.deleteStudent(id);
 	}
 
 }

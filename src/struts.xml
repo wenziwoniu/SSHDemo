@@ -21,15 +21,19 @@
     
     <package name="student" extends="struts-default" namespace="/student">
 		<action name="redirect" method="redirect" class="com.myself.action.test.StudentAction">
-			<result name="success">/views/dwz/table.jsp</result>
+			<result name="success">/views/dwz/peoples.jsp</result>
 		</action>  
 		
 		<action name="saveStudent" method="saveStudent" class="com.myself.action.test.StudentAction">
 			<result name="success">/views/commons/ajaxDone.jsp</result>
 		</action> 
 		
+		<action name="updateStudent" method="updateStudent" class="com.myself.action.test.StudentAction">
+			<result name="success">/views/commons/ajaxDone.jsp</result>
+		</action> 
+		
 		<action name="editStudent" method="editStudent" class="com.myself.action.test.StudentAction">
-			<result name="success">/views/dwz/peopleAdd.jsp</result>
+			<result name="success">/views/dwz/peopleEdit.jsp</result>
 		</action>   
 		
 		<action name="deleteStudent" method="deleteStudent" class="com.myself.action.test.StudentAction">

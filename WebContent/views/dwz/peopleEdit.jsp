@@ -13,8 +13,9 @@
 <body>
 	
 	<div class="pageContent">
-		<form method="post" action="/SSHDemo/student/saveStudent.action" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+		<form method="post" action="/SSHDemo/student/updateStudent.action" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
 			<div class="pageFormContent" layoutH="50">
+				<input type="text" name="student.id" value="${student.id}" style="display: none;">
 				<p>
 					<label>姓名：</label>
 					<input type="text" name="student.studentName" value="${student.studentName}" />

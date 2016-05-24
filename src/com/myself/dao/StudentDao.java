@@ -3,12 +3,9 @@ package com.myself.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Id;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.mapping.Array;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.myself.entity.Student;
@@ -17,17 +14,8 @@ import com.myself.pojo.PageObject;
 import com.myself.util.StringUtils;
 
 @Repository
-public class StudentDao {
+public class StudentDao extends HibernateDaoSupport {
 	
-	private SessionFactory sessionFactory;
-	
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 	
 	@SuppressWarnings("unchecked")
 	public PageObject<Student> findAllStudent(CommonQuery commonQuery, Student student) {
@@ -36,7 +24,7 @@ public class StudentDao {
 		if (StringUtils.isNotBlank(student.getStudentName())) {
 			countString.append("WHERE STUDENT_NAME = :studentName");
 		}
-		Session session = sessionFactory.getCurrentSession();
+		Session session = this.getSessionFactory().getCurrentSession();
 		Query countQuery = session.createSQLQuery(countString.toString());
 		if (StringUtils.isNotBlank(student.getStudentName())) {
 			countQuery.setParameter("studentName", student.getStudentName());
@@ -77,17 +65,17 @@ public class StudentDao {
 	 * @param student
 	 */
 	public void saveStudent(Student student) {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = this.getSessionFactory().getCurrentSession();
 		session.save(student);
 	}
 	
 	public void updateStudent(Student student) {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = this.getSessionFactory().getCurrentSession();
 		Student student2 = (Student) session.merge(student);
 	}
 	
 	public void deleteStudent(String id) {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = this.getSessionFactory().getCurrentSession();
 		String sqlString = "DELETE FROM STUDENT WHERE ID = :id";
 		Query query = session.createSQLQuery(sqlString);
 		query.setParameter("id", id);
@@ -95,7 +83,7 @@ public class StudentDao {
 	}
 	
 	public Student findStudentById(Long id) {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = this.getSessionFactory().getCurrentSession();
 		String sqlString = "SELECT * FROM STUDENT WHERE ID = :id";
 		Query query = session.createSQLQuery(sqlString);
 		query.setParameter("id", id);

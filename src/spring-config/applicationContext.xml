@@ -19,7 +19,7 @@
 			http://www.springframework.org/schema/util 
 			http://www.springframework.org/schema/util/spring-util-3.0.xsd
 			http://www.springframework.org/schema/jee
-            http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
+            http://www.springframework.org/schema/jee/spring-jee-3.0.xsd" default-autowire="byName">
 	
 	<bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
@@ -104,9 +104,6 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-	<bean id="studentDao" class="com.myself.dao.StudentDao">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
 	
 	<bean id="classDao" class="com.myself.dao.ClassDao">
 		<property name="sessionFactory" ref="sessionFactory"></property>

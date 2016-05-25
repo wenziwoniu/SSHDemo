@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
@@ -14,8 +16,10 @@ import com.myself.pojo.PageObject;
 import com.myself.util.StringUtils;
 
 @Repository
-public class StudentDao extends HibernateDaoSupport {
+public class StudentDao {
 	
+	@Autowired
+	private SessionFactory sessionFactory;
 	
 	@SuppressWarnings("unchecked")
 	public PageObject<Student> findAllStudent(CommonQuery commonQuery, Student student) {
@@ -24,7 +28,7 @@ public class StudentDao extends HibernateDaoSupport {
 		if (StringUtils.isNotBlank(student.getStudentName())) {
 			countString.append("WHERE STUDENT_NAME = :studentName");
 		}
-		Session session = this.getSessionFactory().getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		Query countQuery = session.createSQLQuery(countString.toString());
 		if (StringUtils.isNotBlank(student.getStudentName())) {
 			countQuery.setParameter("studentName", student.getStudentName());
@@ -65,17 +69,17 @@ public class StudentDao extends HibernateDaoSupport {
 	 * @param student
 	 */
 	public void saveStudent(Student student) {
-		Session session = this.getSessionFactory().getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		session.save(student);
 	}
 	
 	public void updateStudent(Student student) {
-		Session session = this.getSessionFactory().getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		Student student2 = (Student) session.merge(student);
 	}
 	
 	public void deleteStudent(String id) {
-		Session session = this.getSessionFactory().getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		String sqlString = "DELETE FROM STUDENT WHERE ID = :id";
 		Query query = session.createSQLQuery(sqlString);
 		query.setParameter("id", id);
@@ -83,7 +87,7 @@ public class StudentDao extends HibernateDaoSupport {
 	}
 	
 	public Student findStudentById(Long id) {
-		Session session = this.getSessionFactory().getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		String sqlString = "SELECT * FROM STUDENT WHERE ID = :id";
 		Query query = session.createSQLQuery(sqlString);
 		query.setParameter("id", id);
